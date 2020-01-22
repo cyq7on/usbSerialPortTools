@@ -240,5 +240,40 @@ public class SerialPortUtil {
         return cardNo;
     }
 
+    public static String xor(String s){
+        int key = 0x10;
+        char[] charArray = s.toCharArray();
+        for(int i =0;i<charArray.length;i++){
+            charArray[i]=(char)(charArray[i]^key);
+        }
+        return String.valueOf(charArray);
+
+//		byte key = 0x10;
+//		byte[] bts =  para.getBytes();
+//		for(int i = 0; i< bts.length;i++){
+//			bts[i]^=key;
+//		}
+//		String s = new String(bts);
+
+    }
+
+    public static String getBCC(byte[] data) {
+        return getBCC(data, 0, data.length);
+    }
+
+    public static String getBCC(byte[] data, int start, int end) {
+        byte[] BCC = new byte[1];
+        for (int i = start; i < data.length; i++) {
+            if (i == end) {
+                break;
+            }
+            BCC[0] = (byte) (BCC[0] ^ data[i]);
+        }
+        String hex = Integer.toHexString(BCC[0] & 0xFF);
+        if (hex.length() == 1) {
+            hex = '0' + hex;
+        }
+        return hex.toUpperCase();
+    }
 
 }
