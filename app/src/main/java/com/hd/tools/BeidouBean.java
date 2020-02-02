@@ -26,8 +26,9 @@ public class BeidouBean {
         }
     }
 
-    //定位信息，文档字段多达15个，这里只取了主要的几个
+    //定位信息，文档字段非常多，这里只取了主要的几个
     public static class Location{
+        public String customStr;
         public String userId;
         //定位时刻(UTC)，084936.50
         public String time;
