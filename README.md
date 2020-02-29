@@ -1,6 +1,9 @@
+## [北斗卫星导航拓荒记](https://www.jianshu.com/p/3bc639390506)
+
 ## 本工程是基于[usb-with-serial-port](https://github.com/HelloHuDi/usb-with-serial-port)开发的简单调试工具.
 
-## [download apk](https://raw.githubusercontent.com/HelloHuDi/usbSerialPortTools/master/app/release/app-release.apk)
+## [download apk](./app/release/app-debug.apk)
+## [原项目 apk](https://raw.githubusercontent.com/HelloHuDi/usbSerialPortTools/master/app/release/app-release.apk)
 
 ## support android sdk version 19+
 
