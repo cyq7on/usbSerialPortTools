@@ -178,14 +178,6 @@ abstract class MeasureActivity<T> : BaseActivity() {
             try {
                 ins += "\r\n"
                 val toByteArray = ins.toByteArray(charset("UTF-8"))
-                //                val newByteArray = ByteArray(toByteArray.size + 4)
-//                for (i in toByteArray.indices) {
-//                    newByteArray[i] = toByteArray[i]
-//                }
-//                newByteArray[toByteArray.size] = 13
-//                newByteArray[toByteArray.size + 1] = 10
-//                newByteArray[toByteArray.size + 2] = 13
-//                newByteArray[toByteArray.size + 3] = 10
                 tv_send.append("bytes：")
                 tv_send.append(Arrays.toString(toByteArray))
                 tv_send.append("\n")

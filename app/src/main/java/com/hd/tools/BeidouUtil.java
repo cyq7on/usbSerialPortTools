@@ -35,9 +35,7 @@ public class BeidouUtil {
      * @return 获取位置信息命令
      */
     public static String getLocationCmd() {
-        String s = "CCRMO,GGA,2,60*09";
-        String check = SerialPortUtil.getBCC(s.getBytes());
-        return "$" + s + "*" + check + "\r\n";
+        return "$CCRMO,GGA,2,60*09\r\n";
     }
 
     public static String getLocationCmd(int freq) {
@@ -75,10 +73,8 @@ public class BeidouUtil {
                     .append(",").append(id)
                     .append(",").append(middle)
                     .append(",").append(contentFlag);
-            for (byte b : contentBytes) {
-                String hex = SerialPortUtil.byteToHex(b);
-                sb.append(hex);
-            }
+            String hexString = SerialPortUtil.encodeHexString(contentBytes);
+            sb.append(hexString);
             String s = sb.toString();
             String check = SerialPortUtil.getBCC(s.getBytes(charsetName));
             result = "$" + s + "*" + check + "\r\n";
@@ -135,7 +131,7 @@ public class BeidouUtil {
      * 解析位置信息
      *
      * @param response 回传字符串，eg：
-     *                 GNGGA,063846.00,2914.96875,N,10444.57129,E,1,12,1.07,316.47,M,0,M,,,2.58*6A
+     *                 $GNGGA,063846.00,2914.96875,N,10444.57129,E,1,12,1.07,316.47,M,0,M,,,2.58*6A
      * @return
      */
     public static BeidouBean.Location parseLocation(String response) {
